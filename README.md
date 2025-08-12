@@ -1,7 +1,7 @@
 # Admin Writing Interface
 
 <div align="center">
-  <img src="riabiz.webp" alt="RIABiz Logo" width="200"/>
+  <img src="logo.jpg" alt="RIABiz Logo" width="200"/>
 </div>
 
 An open-source content management system for creating and managing articles, built with Next.js and TypeScript.
@@ -26,7 +26,7 @@ We've open-sourced this battle-tested content management system to give back to 
 
 ## Prerequisites
 
-- Node.js 16+ 
+- Node.js 16+
 - npm or yarn
 - A backend API that implements the required endpoints
 
