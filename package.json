@@ -13,6 +13,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^35.4.0",
+    "@ckeditor/ckeditor5-react": "^5.0.6",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^1.0.6",
     "@tanstack/react-query": "^4.36.1",

@@ -18,7 +18,7 @@
 
 import React, { useEffect } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { Editor } from "riabiz-ckeditor/build/ckeditor";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 export function RiabizEditor({ articleBody, articlePk, register, setValue }) {
   // register the field manually
@@ -45,81 +45,47 @@ export function RiabizEditor({ articleBody, articlePk, register, setValue }) {
           <div className="col-span-3" ref={editorContainerElementRef}>
             <CKEditor
               id="editor"
-              editor={Editor}
+              editor={ClassicEditor}
               // https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/react.html#component-properties
               // https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/configuration.html
               config={{
                 toolbar: {
                   items: [
-                    "undo",
-                    "redo",
-                    "|",
                     "heading",
                     "|",
                     "bold",
                     "italic",
-                    "underline",
                     "link",
                     "bulletedList",
                     "numberedList",
                     "|",
-                    "uploadcareWidget",
+                    "outdent",
+                    "indent",
+                    "|",
                     "blockQuote",
                     "insertTable",
+                    "mediaEmbed",
+                    "undo",
+                    "redo"
+                  ]
+                },
+                image: {
+                  toolbar: [
+                    "imageStyle:inline",
+                    "imageStyle:block",
+                    "imageStyle:side",
                     "|",
-                    "removeFormat",
-                    "sourceEditing",
-                    "revisionHistory",
-                  ],
-                  shouldNotGroupWhenFull: true,
+                    "toggleImageCaption",
+                    "imageTextAlternative"
+                  ]
                 },
                 table: {
                   contentToolbar: [
                     "tableColumn",
                     "tableRow",
-                    "mergeTableCells",
-                    "tableProperties",
-                    "tableCellProperties",
-                    "toggleTableCaption",
-                  ],
-                },
-                image: {
-                  toolbar: [
-                    "imageStyle:block",
-                    "imageStyle:alignRight",
-                    "imageStyle:alignLeft",
-                    "|",
-                    "toggleImageCaption",
-                    "imageTextAlternative",
-                    "resizeImage",
-                  ],
-                  resizeUnit: "px",
-                  resizeOptions: [
-                    {
-                      name: "resizeImage:original",
-                      label: "Original",
-                      value: null,
-                    },
-                    {
-                      name: "resizeImage:200",
-                      label: "Headshot",
-                      value: "200",
-                    },
-                    {
-                      name: "resizeImage:200",
-                      label: "Large Headshot",
-                      value: "400",
-                    },
-                  ],
-                },
-                uploadcareWidget: {
-                  config: {
-                    apiKey: process.env.NEXT_PUBLIC_UPLOADCARE,
-                  },
-                },
-                collaboration: {
-                  channelId: `article-ws-${articlePk}`,
-                },
+                    "mergeTableCells"
+                  ]
+                }
               }}
               data={articleBody}
               onChange={onChange}

@@ -18,7 +18,7 @@
 
 import React, { useEffect } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import { Editor } from "riabiz-ckeditor/build/ckeditor";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 export function RiabizEditor({ articleBody, register, setValue }) {
   // register the field manually
@@ -37,124 +37,45 @@ export function RiabizEditor({ articleBody, register, setValue }) {
       <div className="">
             <CKEditor
               id="editor"
-              editor={Editor}
+              editor={ClassicEditor}
               config={{
-                link: {
-                  addTargetToExternalLinks: true
-                },
-                alignment: {
-                  options: [ 'left', 'right', 'center' ]
-                },
-                indentBlock: {
-                  offset: 1,
-                  unit: 'em'
-                },
                 toolbar: {
                   items: [
-                    "undo",
-                    "redo",
-                    "|",
                     "heading",
                     "|",
                     "bold",
                     "italic",
-                    "underline",
                     "link",
                     "bulletedList",
                     "numberedList",
                     "|",
                     "outdent",
                     "indent",
-                    "alignment",
                     "|",
-                    "uploadcareWidget",
                     "blockQuote",
                     "insertTable",
-                    "horizontalLine",
+                    "mediaEmbed",
+                    "undo",
+                    "redo"
+                  ]
+                },
+                image: {
+                  toolbar: [
+                    "imageStyle:inline",
+                    "imageStyle:block",
+                    "imageStyle:side",
                     "|",
-                    "wproofreader",
-                    "|",
-                    "removeFormat",
-                    "sourceEditing",
-                    "|",
-                    "saveBtn",
-                    "previewBtn"
-                  ],
-                  shouldNotGroupWhenFull: true,
+                    "toggleImageCaption",
+                    "imageTextAlternative"
+                  ]
                 },
                 table: {
                   contentToolbar: [
                     "tableColumn",
                     "tableRow",
-                    "mergeTableCells",
-                    "tableProperties",
-                    "tableCellProperties",
-                    "toggleTableCaption",
-                  ],
-                  tableProperties: {
-                    defaultProperties: {
-                      borderStyle: "solid",
-                      borderColor: "hsl(0, 0%, 70%)",
-                      borderWidth: "1px",
-                      alignment: "right",
-                      width: "350px",
-                      height: "450px",
-                    },
-                  },
-                  tableCellProperties: {
-                    defaultProperties: {
-                      horizontalAlignment: "center",
-                      verticalAlignment: "top",
-                      padding: "3px",
-                    },
-                  },
-                },
-                image: {
-                  toolbar: [
-                    "imageStyle:alignLeft",
-                    "imageStyle:block",
-                    "imageStyle:alignRight",
-                    "|",
-                    "toggleImageCaption",
-                    "imageTextAlternative",
-                    "resizeImage",
-                  ],
-                  resizeUnit: "%",
-                  resizeOptions: [
-                    {
-                      name: "resizeImage:original",
-                      label: "Original",
-                      value: null,
-                    },
-                    {
-                      name: "resizeImage:25",
-                      label: "Headshot",
-                      value: "25",
-                    },
-                    {
-                      name: "resizeImage:66",
-                      label: "2/3 Width",
-                      value: "66",
-                    },
-                    {
-                      name: "resizeImage:100",
-                      label: "Full Width",
-                      value: "100",
-                    },
-                  ],
-                },
-                uploadcareWidget: {
-                  config: {
-                    apiKey: process.env.NEXT_PUBLIC_UPLOADCARE,
-                  },
-                },
-                wproofreader: {
-                  serviceId: process.env.NEXT_PUBLIC_WP_SERVICEID,
-                  disableDictionariesPreferences: true,
-                  userDictionaryName: 'riabiz-dictionary',
-                  srcUrl:
-                    "https://svc.webspellchecker.net/spellcheck31/wscbundle/wscbundle.js",
-                },
+                    "mergeTableCells"
+                  ]
+                }
               }}
               data={articleBody}
               onChange={onChange}
