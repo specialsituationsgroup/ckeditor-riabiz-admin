@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Open-source content management system for creating and managing articles",
   "author": "",
-  "license": "MIT",
+  "license": "GPL-2.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
